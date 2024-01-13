@@ -1,0 +1,1791 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QArcGISLib</name>
+    </assembly>
+    <members>
+        <member name="T:QArcGISLib.CAD.QCAD">
+            <summary>
+            cad操作
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.OpenWorkSpace(System.String,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@)">
+            <summary>
+            打开CAD 工作空间
+            </summary>
+            <param name="sCADPath"></param>
+            <param name="pWorkspace"></param>
+            <param name="sError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.OpenFeatureWorkSpace(System.String,ESRI.ArcGIS.Geodatabase.IFeatureWorkspace@,System.String@)">
+            <summary>
+            打开CAD要素工作空间
+            </summary>
+            <param name="sCADPath"></param>
+            <param name="pFeatureWorkspace"></param>
+            <param name="sError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.ReadFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,QArcGISLib.ECADDataType,System.String@,ESRI.ArcGIS.Geodatabase.IFeatureClass@)">
+            <summary>
+            读取要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="sCadPath"></param>
+            <param name="dataType"></param>
+            <param name="sError"></param>
+            <param name="pFeatrueClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.ReadFeatureClass(System.String,QArcGISLib.ECADDataType,System.String@,ESRI.ArcGIS.Geodatabase.IFeatureClass@)">
+            <summary>
+            读取cad
+            </summary>
+            <param name="sCadPath"></param>
+            <param name="dataType"></param>
+            <param name="sError"></param>
+            <param name="pFeatrueClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.CrateDwgModel(System.String,WW.Cad.Model.DxfModel@,WW.Cad.Model.Tables.DxfAppId@,System.String@,WW.Cad.Model.DxfVersion)">
+            <summary>
+            创建dwg模型
+            </summary>
+            <param name="DwgPath"></param>
+            <param name="model"></param>
+            <param name="appIdPeUrl"></param>
+            <param name="error"></param>
+            <param name="dxfVersion"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.SaveDwgModel(System.String,WW.Cad.Model.DxfModel,System.String@)">
+            <summary>
+            保存DWG模型
+            </summary>
+            <param name="DwgPath"></param>
+            <param name="model"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.AddLayer(System.String,WW.Cad.Model.DxfModel,WW.Cad.Model.Tables.DxfLayer@,System.String@)">
+            <summary>
+            添加图层
+            </summary>
+            <param name="LayerName"></param>
+            <param name="model"></param>
+            <param name="dxfLayer"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.Add2DwgByGeoExtendedData(WW.Cad.Model.DxfModel,WW.Cad.Model.Tables.DxfLayer,System.String,WW.Cad.Model.DxfExtendedData,WW.Cad.Model.Entities.EntityColor,System.String@)">
+            <summary>
+            空间对象和扩展属性添加到cadlib model中
+            </summary>
+            <param name="model">The model.</param>
+            <param name="dxfLayer">The DXF layer.</param>
+            <param name="SHAPE">The shape.</param>
+            <param name="extendedData">The extended data.</param>
+            <param name="cadlibfeatureinfoColor">Color of the cadlibfeatureinfo.</param>
+            <param name="error">错误信息</param>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.AddText2Dwg(WW.Cad.Model.DxfModel,WW.Cad.Model.DxfExtendedData,WW.Cad.Model.Entities.EntityColor,System.String@)">
+            <summary>
+            扩展属性字段添加值
+            </summary>
+            <param name="model"></param>
+            <param name="ExtendedData"></param>
+            <param name="cadlibfeatureinfoColor"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.CAD.QCAD.Coordinates2Vertices(GeoAPI.Geometries.Coordinate[])">
+            <summary>
+            将GeoAPI节点转换为Cadlib节点
+            </summary>
+            <param name="Coordinates">The coordinates.</param>
+            <returns>DxfLwPolyline.Vertex[].</returns>
+        </member>
+        <member name="T:QArcGISLib.Initialize">
+            <summary>
+            初始化类
+            </summary>
+        </member>
+        <member name="P:QArcGISLib.Initialize.IsInitialized">
+            <summary>
+            是否已初始化
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.Initialize.InitializeLicense">
+            <summary>
+            初始化证书
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.GISCoordTrans.Coordtransform">
+            <summary>
+            坐标转换
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Bd09toGcj02(System.Double,System.Double)">
+            <summary>
+             百度坐标系 (BD-09) 与 火星坐标系 (GCJ-02)的转换
+             即 百度 转 谷歌、高德
+            </summary>
+            <param name="bd_lon"></param>
+            <param name="bd_lat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Gcj02toBd09(System.Double,System.Double)">
+            <summary>
+            火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换
+            即谷歌、高德 转 百度
+            </summary>
+            <param name="lng"></param>
+            <param name="lat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Wgs84toGcj02(System.Double,System.Double)">
+            <summary>
+            WGS84转GCj02
+            </summary>
+            <param name="lng"></param>
+            <param name="lat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Gcj02toWGS84(System.Double,System.Double)">
+            <summary>
+             GCJ02 转换为 WGS84
+            </summary>
+            <param name="longitude"></param>
+            <param name="latitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.TransformLatitude(System.Double,System.Double)">
+            <summary>
+            高德坐标转换求纬度
+            </summary>
+            <param name="longitude"></param>
+            <param name="latitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.TransformLongitude(System.Double,System.Double)">
+            <summary>
+            高德坐标转换求经度
+            </summary>
+            <param name="longitude"></param>
+            <param name="latitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Out_of_china(System.Double,System.Double)">
+            <summary>
+            判断是否在国内，不在国内则不做偏移
+            纬度3.86~53.55,经度73.66~135.05 
+            </summary>
+            <param name="lng"></param>
+            <param name="lat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Wgs84tobd09(System.Double,System.Double)">
+            <summary>
+            WGS84坐标系->百度坐标系
+            </summary>
+            <param name="lon"></param>
+            <param name="lat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.Bd09towgs84(System.Double,System.Double)">
+            <summary>
+            百度坐标系->WGS84坐标系
+            </summary>
+            <param name="bd_lon">百度经度</param>
+            <param name="bd_lat">百度纬度</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.WGS84ToMercator(System.Double,System.Double)">
+            <summary>
+            WGS84经纬度转web Mercator
+            </summary>
+            <param name="lon">经度</param>
+            <param name="lat">纬度</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.Coordtransform.WebMercator2WGS84(System.Double,System.Double)">
+            <summary>
+            web Mercator转WGS84经纬度
+            </summary>
+            <param name="mercatorX"></param>
+            <param name="mercatorY"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.GISCoordTrans.GISCTrans">
+            <summary>
+            坐标转换
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.WGS84toMars(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.WGS84toBaidu(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            WGS84toBaidu
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.Mars2WGS84(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Mars2WGS84
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.Mars2Baidu(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Mars2Baidu
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.Baidu2WGS84(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Baidu2WGS84
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.Baidu2Mars(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Baidu2Mars
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.WGS84ToWebMercator(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            WGS84转Mercator
+            </summary>
+            <param name="long_src"></param>
+            <param name="lat_src"></param>
+            <param name="x_tar"></param>
+            <param name="y_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.WebMercator2WGS84(System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            WGS84转Mercator
+            </summary>
+            <param name="x_src"></param>
+            <param name="y_src"></param>
+            <param name="long_tar"></param>
+            <param name="lat_tar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.CoorTrans(ESRI.ArcGIS.Geometry.IPoint,ESRI.ArcGIS.Geometry.IPoint@,QArcGISLib.ECoordSys,QArcGISLib.ECoordSys)">
+            <summary>
+            单点坐标转换
+            </summary>
+            <param name="ptSrc">原始点</param>
+            <param name="ptDest">转换之后的点</param>
+            <param name="srcCoord">源坐标</param>
+            <param name="tarCoord">转换之后的坐标</param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.CoordTransPointCollection(ESRI.ArcGIS.Geometry.IPointCollection@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@)">
+            <summary>
+            对pointCollection进行坐标转换
+            </summary>
+            <param name="pointCollection"></param>
+            <param name="coordSrc"></param>
+            <param name="coordTar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.CoordTransRing(ESRI.ArcGIS.Geometry.IRing@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@)">
+            <summary>
+            对Ring坐标转换
+            </summary>
+            <param name="ring"></param>
+            <param name="coordSrc"></param>
+            <param name="coordTar"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.CoordTransPolyline(ESRI.ArcGIS.Geometry.IPolyline@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@)">
+            <summary>
+            对Polyline坐标转换
+            </summary>
+            <param name="polyline"></param>
+            <param name="coordSrc"></param>
+            <param name="coordTar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.CoordTransPolygon(ESRI.ArcGIS.Geometry.IGeometry@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@)">
+            <summary>
+            转换面对象坐标
+            </summary>
+            <param name="pGeoPolygon"></param>
+            <param name="pCoordSrc"></param>
+            <param name="pCoordTar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.TransFeature(ESRI.ArcGIS.Geodatabase.IFeature,QArcGISLib.ECoordSys,QArcGISLib.ECoordSys,ESRI.ArcGIS.Geometry.esriGeometryType)">
+            <summary>
+            转换单个Feature
+            </summary>
+            <param name="pFeature"></param>
+            <param name="pCoordSrc"></param>
+            <param name="pCoordTar"></param>
+            <param name="pGeoType"></param>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.TransFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@,ESRI.ArcGIS.Geometry.esriGeometryType,System.Func{System.Int32,System.Int32})">
+            <summary>
+            转换原始FeatureClass,存储到目标FeatureClass中
+            </summary>
+            <param name="pSFeaCls"></param>
+            <param name="pTFeaCls">目标feature class</param>
+            <param name="pCoordSrc"></param>
+            <param name="pCoordTar"></param>
+            <param name="pGeoType"></param>
+            <param name="dispalyProgress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.TransFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IWorkspace@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@,ESRI.ArcGIS.Geometry.ISpatialReference)">
+            <summary>
+            根据已有要素类和目标工作空间，写入目标要素类
+            </summary>
+            <param name="pSFeaCls"></param>
+            <param name="pTWorkspace"></param>
+            <param name="pCoordSrd"></param>
+            <param name="pCoordTar"></param>
+            <param name="pSpaRefSrc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.TransListFeatureClass(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IFeatureDataset@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@,ESRI.ArcGIS.Geometry.ISpatialReference)">
+            <summary>
+            批量转换FeatureClass列表，并写入文件
+            </summary>
+            <param name="listSFC"></param>
+            <param name="pTWorkspace"></param>
+            <param name="pTFeDataset"></param>
+            <param name="pCoordSrd"></param>
+            <param name="pCoordTar"></param>
+            <param name="pSpaRefSrc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.GISCoordTrans.GISCTrans.TransListFeatureClass(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,ESRI.ArcGIS.Geodatabase.IWorkspace@,QArcGISLib.ECoordSys@,QArcGISLib.ECoordSys@,ESRI.ArcGIS.Geometry.ISpatialReference)">
+            <summary>
+            转换featrueClass坐标
+            </summary>
+            <param name="listSFC"></param>
+            <param name="pTWorkspace"></param>
+            <param name="pCoordSrd"></param>
+            <param name="pCoordTar"></param>
+            <param name="pSpaRefSrc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QCompare">
+            <summary>
+            比较类
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QCompare.CompareGeometry(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geometry.IGeometry,QArcGISLib.EGeoCompareMethod)">
+            <summary>
+            判断两个图形的关系
+            </summary>
+            <param name="pGeometryA"></param>
+            <param name="pGeometryB"></param>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QCompare.IsFeatureEqual(ESRI.ArcGIS.Geodatabase.IFeature@,ESRI.ArcGIS.Geodatabase.IFeature@,System.String[])">
+            <summary>
+            判断两个要素是否相同，字段比较和图形比较
+            </summary>
+            <param name="pFeaSrc"></param>
+            <param name="pFeaTar"></param>
+            <param name="fields">字段比较</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QCompare.IsFeatureEqual(ESRI.ArcGIS.Geodatabase.IFeature@,ESRI.ArcGIS.Geodatabase.IFeature@,System.Int32[],System.Int32[])">
+            <summary>
+            判断两个要素是否相同
+            </summary>
+            <param name="pFeaSrc"></param>
+            <param name="pFeaTar"></param>
+            <param name="fieldIndexSrc"></param>
+            <param name="fieldIndexTar"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QConvert">
+            <summary>
+            转换
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QConvert.Geometry2WKB(ESRI.ArcGIS.Geometry.IGeometry)">
+            <summary>
+            转换图形为WKB
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.WKT2WKB(System.String)">
+            <summary>
+            WKT转WKB
+            </summary>
+            <param name="wkt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.WKB2WKT(System.Byte[])">
+            <summary>
+            WKB转WKT
+            </summary>
+            <param name="wkb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.Geometry2WKT(ESRI.ArcGIS.Geometry.IGeometry)">
+            <summary>
+            Geometry转WKT
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.WKB2Geometry(System.Byte[])">
+            <summary>
+            WKB转Geometry
+            </summary>
+            <param name="wkb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.GeoAPI2ESRI(GeoAPI.Geometries.IGeometry)">
+            <summary>
+            GeoAPI Geometry转ESRI Geometry
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.ESRI2GeoAPI(ESRI.ArcGIS.Geometry.IGeometry)">
+            <summary>
+            ESRI Geometry 转 GeoAPI Geometry
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QConvert.WKT2GeoAPI(System.String)">
+            <summary>
+            WKT转GeoAPI Geometry
+            </summary>
+            <param name="wkt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QDataset">
+            <summary>
+            数据集类
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QDataset.OpenFeatureDataSet(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String@)">
+            <summary>
+            打开数据集
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="datasetName">数据集名称</param>
+            <param name="error">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.GetDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureDataset}@,System.String@)">
+            <summary>
+            获取工作空间下所有要素数据集
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listDataset"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.GetDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IDataset}@,System.String@,System.String[])">
+            <summary>
+            获取数据集列表
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listDataset"></param>
+            <param name="strErrInfo"></param>
+            <param name="arrDataset">指定数据集名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.GetDataSetName(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@)">
+            <summary>
+            获取工作空间里所有数据集名称
+            </summary>
+            <param name="pWorkSpace">工作空间</param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.CreateFeatureDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,ESRI.ArcGIS.Geometry.ISpatialReference,System.String@,System.Boolean)">
+            <summary>
+            创建Feature数据集
+            </summary>
+            <param name="pWorkspace">目标工作空间</param>
+            <param name="pDatasetName">数据集名称</param>
+            <param name="pSpatialReference">投影</param>
+            <param name="error"></param>
+            <param name="bOverWrite">是否覆盖</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.CreateFeatureDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IFeatureDataset@,System.String@,System.String,System.Boolean)">
+            <summary>
+            创建数据集
+            </summary>
+            <param name="pWorkspace">目标工作空间</param>
+            <param name="datasetSrc">参考数据集</param>
+            <param name="suffix">后缀，即改名</param>
+            <param name="error">错误</param>
+            <param name="bOverWrite">是否重写</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.CreateFeatureDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@,System.Boolean,System.String,System.String[])">
+            <summary>
+            创建数据集
+            </summary>
+            <param name="pWsSrc"></param>
+            <param name="pWsTar"></param>
+            <param name="error"></param>
+            <param name="bContainFeaCls">是否包含数据集下要素类</param>
+            <param name="suffix">名称后缀，即统一改名</param>
+            <param name="datasetNames">指定数据集创建</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.DeleteDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            删除所有数据集
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="pDataSetName">数据集名称，为空表示全部删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QDataset.IsFeatureDatasetInWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            数据集是否存在于工作空间
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pFeatureDatasetName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.ETransType">
+            <summary>
+            坐标转换枚举值
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.UnKnown">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.WGS84TOMARS">
+            <summary>
+            WGS84转火星坐标
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.WGS84TOBAIDU">
+            <summary>
+            WGS84转百度
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.MARS2WGS84">
+            <summary>
+            火星坐标转WGS84
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.MARS2BAIDU">
+            <summary>
+            火星坐标转百度
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.BAIDU2WGS84">
+            <summary>
+            百度转WGS84
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.BAIDU2MARS">
+            <summary>
+            百度转火星
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.NJ92NJ2008">
+            <summary>
+            NJ92转NJ2008
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.BJ54NJ92">
+            <summary>
+            BJ54转NJ92
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.NJ2008NJ92">
+            <summary>
+            NJ2008转NJ92
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.WGS84NJ92">
+            <summary>
+            WGS84转NJ92
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.XA80NJ92">
+            <summary>
+            XA80转NJ92
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.NJ92BJ54">
+            <summary>
+            NJ92转BJ54
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.NJ92WGS84">
+            <summary>
+            NJ92转WGS84
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ETransType.NJ92XA80">
+            <summary>
+            NJ92转XA80
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.EGeoCompareMethod">
+            <summary>
+            要素比较方法枚举值
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Equals">
+            <summary>
+            相等
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Touches">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Contains">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Within">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Disjoint">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Crosses">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Overlaps">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGeoCompareMethod.Relation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.EGdbType">
+            <summary>
+            GDB数据库类型
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGdbType.PersonGeodatabase">
+            <summary>
+            个人数据库
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGdbType.FileGeodatabase">
+            <summary>
+            文件数据库
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EGdbType.Shapefile">
+            <summary>
+            shapefile
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.ECoordSys">
+            <summary>
+            坐标系统
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECoordSys.WGS84">
+            <summary>
+            WGS84坐标
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECoordSys.MARS">
+            <summary>
+            火星坐标系
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECoordSys.BAIDU">
+            <summary>
+            百度09
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECoordSys.WEBMERCATOR">
+            <summary>
+            网络墨卡托
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.EDatabaseType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EDatabaseType.oracle11g">
+            <summary>
+            oracle数据库
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EDatabaseType.postgresql">
+            <summary>
+            pgsql
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.EDatabaseType.sqlserver">
+            <summary>
+            sqlserver
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.ECADDataType">
+            <summary>
+            CAD数据类型
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECADDataType.Point">
+            <summary>
+            点
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECADDataType.Polyline">
+            <summary>
+            多段线
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECADDataType.Polygon">
+            <summary>
+            面
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECADDataType.Annotation">
+            <summary>
+            注记
+            </summary>
+        </member>
+        <member name="F:QArcGISLib.ECADDataType.MultiPathch">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QArcGISLib.QExist">
+            <summary>
+            是否存在
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsObjectInWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.esriDatasetType,System.String)">
+            <summary>
+            判断对象是否存在于工作空间中
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="objectType">对象类型</param>
+            <param name="pObjectName">对象名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureDatasetInWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            要素数据集是否在工作空间中
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pDatasetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureClassInDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String)">
+            <summary>
+            判断数据集下是否已存在要素类
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="pDatasetName">数据集名称</param>
+            <param name="pFCName">要素类名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureClassInWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            判断数据库中是否存在独立要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pFCName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureClassInAllWorkspace(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            判断要素类是否存在于工作空间中，包括数据集和独立要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pFCName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureInFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass,ESRI.ArcGIS.Geodatabase.IFeature,ESRI.ArcGIS.Geodatabase.IFeature@,System.String[])">
+            <summary>
+            判断要素是否在要素类中
+            </summary>
+            <param name="pFeaCls"></param>
+            <param name="pFeatureTar"></param>
+            <param name="pFindFeature"></param>
+            <param name="ComparedFields">比较的字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QExist.IsFeatureListInFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.String[])">
+            <summary>
+            找出要素集合与要素类中要素相同的要素
+            </summary>
+            <param name="pFeaClsSrc">要比较的要素类</param>
+            <param name="listFeatureTar">待比较的要素集合A</param>
+            <param name="listFindFeaTar">集合A中存在要素类中的要素集合</param>
+            <param name="fields">要素比较一样时，需要判断的字段</param>
+            <returns>找出要素类中存在的要素</returns>
+        </member>
+        <member name="T:QArcGISLib.QFeature">
+            <summary>
+            要素
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QFeature.SearchFeature(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum)">
+            <summary>
+            查找要素
+            </summary>
+            <param name="featureClass"></param>
+            <param name="envelope"></param>
+            <param name="spatialRel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.SearchFeature(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pFeaClass"></param>
+            <param name="strWhereClause">条件字符串："字段名 = '字段值' "</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.FindSameFeature(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.String@,System.String[])">
+            <summary>
+            找出两个要素集中相同的要素集
+            </summary>
+            <param name="listFeatureSrc">源要素列表</param>
+            <param name="listFeatureTar">待比较的要素列表</param>
+            <param name="listFindFeaSrc">源要素集合中与待比较的要素列表相同要素集合</param>
+            <param name="fields">比较的字段</param>
+            <param name="error">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.FindSameFeature(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.String@,System.String[])">
+            <summary>
+            查找两个要素类中相同的要素
+            </summary>
+            <param name="pFeaClsSrc">源要素类</param>
+            <param name="pFeaClsTar">新要素类</param>
+            <param name="listFindFeaSrc">源要素类中已存在的要素集合</param>
+            <param name="error"></param>
+            <param name="fields">比较的字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.GetFeature(ESRI.ArcGIS.Geometry.IGeometry,ESRI.ArcGIS.Geodatabase.IFeatureClass)">
+            <summary>
+            要素类中获得指定图形的对象
+            </summary>
+            <param name="pGeometry"></param>
+            <param name="featureClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.GetFeature(ESRI.ArcGIS.Geodatabase.IFeatureClass)">
+            <summary>
+            获取要素类下所有要素
+            </summary>
+            <param name="featureClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.GetFeatureName(ESRI.ArcGIS.Geodatabase.IFeature@)">
+            <summary>
+            获取要素类名称
+            </summary>
+            <param name="pFeature"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.GetFeatureNumber(ESRI.ArcGIS.Geodatabase.IFeatureClass@)">
+            <summary>
+            获取要素类中要素的个数
+            </summary>
+            <param name="pFeatureClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureByIFeature(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String)">
+            <summary>  
+            通过IFeature.Delete方法删除要素  
+            </summary>  
+            <param name="pFeatureclass">要素类</param>  
+            <param name="strWhereClause">查询条件</param>  
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureByIFeatureCursor(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String)">
+            <summary>  
+            通过IFeatureCursor.DeleteFeature方法删除要素  
+            </summary>  
+            <param name="pFeatureclass">要素类</param>  
+            <param name="strWhereClause">查询条件: example ：objectID 小于 8 </param>  
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureBySQL(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String)">
+            <summary>
+            根据SQL语句删除要素
+            </summary>
+            <param name="PFeatureclass"></param>
+            <param name="strWhereClause">sql语句的where部分</param>
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureBySerchedRows(ESRI.ArcGIS.Geodatabase.IFeatureClass,System.String)">
+            <summary>
+            根据行删除要素
+            </summary>
+            <param name="PFeatureclass"></param>
+            <param name="strWhereClause"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureByITable(ESRI.ArcGIS.Geodatabase.IFeatureClass,System.String)">
+            <summary>  
+            通过ITable.DeleteSearchedRows方法删除要素  
+            </summary>  
+            <param name="pFeatureclass">要素类</param>  
+            <param name="strWhereClause">查询条件</param>  
+        </member>
+        <member name="M:QArcGISLib.QFeature.DeleteFeatureByITable(ESRI.ArcGIS.Carto.IFeatureLayer,ESRI.ArcGIS.Geodatabase.IQueryFilter)">
+            <summary>
+            通过ITable.DeleteSearchedRows方法删除要素 
+            </summary>
+            <param name="pLayer"></param>
+            <param name="queryFilter"></param>
+        </member>
+        <member name="M:QArcGISLib.QFeature.WriteFeature2FeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeature@,System.Object@,System.String@,System.Boolean)">
+            <summary>
+            插入单个数据
+            </summary>
+            <param name="pFeatureCls"></param>
+            <param name="pFeature"></param>
+            <param name="featureOID">插入数据之后该数据的OID</param>
+            <param name="sError">错误信息</param>
+            <param name="bAppendFields">字段不一致时，是否追加字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeature.WriteFeature2FeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeature}@,System.String@,System.Boolean)">
+            <summary>
+            将Feature的集合写入到FeatureClass中
+            </summary>
+            <param name="pFeatureCls"></param>
+            <param name="pListFeatures"></param>
+            <param name="sError">错误信息</param>
+            <param name="bAppendFields">字段不一致时，是否追加字段</param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QFeatureClass">
+            <summary>
+            要素类
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.OpenFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String@)">
+            <summary>
+            打开要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="featureClassName"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.OpenFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureDataset@,System.String,System.String@)">
+            <summary>
+            打开要素集下的要素类
+            </summary>
+            <param name="pFeatureDataset"></param>
+            <param name="featureClassName"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.OpenFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String,System.String@)">
+            <summary>
+            打开工作空间下要素集下指定要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="datasetName"></param>
+            <param name="featureClassName"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.CreateFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geometry.ISpatialReference,System.String)">
+            <summary>
+            根据已有FeatureClass的字段，在在Workspace内创建同字段的FeatureClass
+            </summary>
+            <param name="pWorkspace">Feature工作空间</param>
+            <param name="pFeatCls">已有featureClass</param>
+            <param name="pSpatialReference">空间参考</param>
+            <param name="newFeaClsName">重命名，为空保持不变</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.CreateFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureDataset@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String@,System.String)">
+            <summary>
+            根据已有FeatureClass的字段，在数据集内创建同字段的FeatureClass
+            </summary>
+            <param name="pFeaDataset">目标数据集</param>
+            <param name="pFeatCls">已有FeatureClass</param>
+            <param name="error">错误信息</param>
+            <param name="modifyFeaClassName">修改后的要素类名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.CreateFeatureClassFromDS2DS(ESRI.ArcGIS.Geodatabase.IFeatureDataset@,ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IFeatureDataset@,System.String@,System.String)">
+            <summary>
+            将源数据集中要素类复制到目标工作空间指定数据集下
+            suffix可给要素类名称添加后缀
+            </summary>
+            <param name="pFeaDsSrc">源数据集</param>
+            <param name="pWsTar">目标工作空间</param>
+            <param name="pFeaDsTar">指定数据集</param>
+            <param name="error"></param>
+            <param name="suffix">要素类名称添加后缀，为空保持不变</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.CreateFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@,System.String,System.String[])">
+            <summary>
+            目标工作空间之间复制独立要素类
+            </summary>
+            <param name="pWsSrc">源工作空间</param>
+            <param name="pWsTar">目标工作空间</param>
+            <param name="error">错误</param>
+            <param name="suffix">要素类添加统一后缀</param>
+            <param name="feaClsNames">指定复制的要素类名称，为空表示所有</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,System.String@)">
+            <summary>
+            获取要素类列表
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listFeatureCls"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassNames(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{System.String}@,System.String@)">
+            <summary>
+            获取工作空间独立要素类名称集合
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listFeatureClsNames"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.Dictionary{ESRI.ArcGIS.Geodatabase.IFeatureDataset,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}}@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,System.String@)">
+            <summary>
+            读取 工作空间下所有数据集及独立要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="dicDataSet">要素类字典</param>
+            <param name="listFeatureCls">独立要素类集合</param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassInDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,System.String@)">
+            <summary>
+            获取工作空间下所有数据集下要素类集合
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listFeatureCls"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassInDataset(ESRI.ArcGIS.Geodatabase.IFeatureDataset@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@,System.String@)">
+            <summary>
+            读取要素集下所有要素类
+            </summary>
+            <param name="pFeatureDS"></param>
+            <param name="listFeatureCls"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetNotNullFeatureClass(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IFeatureClass}@)">
+            <summary>
+            获取非空要素类
+            </summary>
+            <param name="listFeature"></param>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassNamesInDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            根据数据集名称获取该数据集下的要素类名称列表
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="strDatasetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassNamesInDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String@,System.Boolean)">
+            <summary>
+            获取Dataset下所有Feature的名称列表
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="strDatasetName"></param>
+            <param name="strErrInfo"></param>
+            <param name="bGetAliasName">是否获取别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassNamesInDataset(ESRI.ArcGIS.Geodatabase.IFeatureDataset@,System.String@,System.Boolean)">
+            <summary>
+            获取数据集内要素类名称
+            </summary>
+            <param name="pFeatureDataset"></param>
+            <param name="strErrInfo"></param>
+            <param name="bGetAliasName">是否获取别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatrueClassInDataset(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@,System.Boolean)">
+            <summary>
+            获取 数据集-要素类集合 名称字典
+            </summary>
+            <param name="pWorkSpace"></param>
+            <param name="strErrInfo"></param>
+            <param name="bGetAliasName">是否获取别名，默认为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.GetFeatureClassName(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.Boolean)">
+            <summary>
+            获取要素类名称
+            </summary>
+            <param name="pFeaCls"></param>
+            <param name="bAliasName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.DeleteFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            删除工作空间下要素类
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pFeatureClsName">要素类名称。为空时，全部删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.DeleteFeatureClass(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String)">
+            <summary>
+            删除数据集下所有要素类
+            </summary>
+            <param name="pWorkspace">工作空间</param>
+            <param name="pDataSetName">数据集名称</param>
+            <param name="pFeatureClassName">要素类名称。为空时，全部删除</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.OpenCadDrawingDataset(System.String,System.String,System.String)">
+            <summary>
+            通过dwg获取Featureclass
+            </summary>
+            <param name="sCADFilePath"></param>
+            <param name="fileName"></param>
+            <param name="type">polygon等</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.IsFeatrueClassNull(ESRI.ArcGIS.Geodatabase.IFeatureClass@)">
+            <summary>
+            判断要素类是否为空的要素类，不含任何要素返回0,有要素，返回1，出错，返回-1;
+            </summary>
+            <param name="pFeaCls"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QFeatureClass.CopyFeatureClass(ESRI.ArcGIS.Geodatabase.IFeatureClass@,ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String@,System.Boolean)">
+            <summary>
+            拷贝要素类
+            </summary>
+            <param name="pSrcFeaCls"></param>
+            <param name="pTarFeaCls"></param>
+            <param name="strError"></param>
+            <param name="bAppendFields">字段不一致时，是否追加字段</param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QField">
+            <summary>
+            字段
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QField.GetFields(ESRI.ArcGIS.Geodatabase.IWorkspace,System.String,System.Collections.Generic.List{System.String}@,System.Collections.Generic.List{System.String}@,System.String@)">
+            <summary>
+            根据图层名获取字段名以及字段别名
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="featureClassName"></param>
+            <param name="listFieldName">字段名集合</param>
+            <param name="listFieldAliasName">字段别名集合</param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QField.AddField(ESRI.ArcGIS.Geodatabase.ITable@,System.String@,System.String,ESRI.ArcGIS.Geodatabase.esriFieldType,System.String,System.Boolean)">
+            <summary>
+            表格添加字段
+            </summary>
+            <param name="pTable"></param>
+            <param name="error"></param>
+            <param name="fieldname"></param>
+            <param name="fieldtype"></param>
+            <param name="aliasname"></param>
+            <param name="isNullable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QField.AddField(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String@,System.String,ESRI.ArcGIS.Geodatabase.esriFieldType,System.String,System.Boolean)">
+            <summary>
+            要素类添加字段
+            </summary>
+            <param name="featrueClass"></param>
+            <param name="error"></param>
+            <param name="fieldname"></param>
+            <param name="fieldtype"></param>
+            <param name="aliasname"></param>
+            <param name="isNullable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QField.SetFieldValue(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String,System.Object)">
+            <summary>
+            统一设置要素类字段值
+            </summary>
+            <param name="featureClass"></param>
+            <param name="field"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QField.SetFieldValue(ESRI.ArcGIS.Geodatabase.IFeatureClass@,System.String,System.Object,System.String)">
+            <summary>
+            根据指定条件，设置字段值
+            </summary>
+            <param name="featureClass">要素类</param>
+            <param name="field">字段名称</param>
+            <param name="value">值</param>
+            <param name="strWhereClause">条件语句</param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QPoint">
+            <summary>
+            点
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QPoint.GetPoints(ESRI.ArcGIS.Geometry.IPointCollection@)">
+            <summary>
+            从 IPointCollection 获得 点集
+            </summary>
+            <param name="ptCol"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPoint.calAngleVectors(ESRI.ArcGIS.Geometry.IPoint,ESRI.ArcGIS.Geometry.IPoint,ESRI.ArcGIS.Geometry.IPoint)">
+            <summary>
+            计算连续三点构成的两个向量的夹角
+            </summary>
+            <param name="pt1">起点1</param>
+            <param name="pt2">连接点2</param>
+            <param name="pt3">终点3</param>
+            <returns>向量夹角</returns>
+        </member>
+        <member name="T:QArcGISLib.QPolygon">
+            <summary>
+            面
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QPolygon.FlatBuffer(ESRI.ArcGIS.Geometry.IPolyline,System.Double)">
+            <summary>
+            平面缓冲区
+            </summary>
+            <param name="_pLine"></param>
+            <param name="_pBufferDis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolygon.ConstructPolygonFromPolyline(ESRI.ArcGIS.Geometry.IPolyline)">
+            <summary>
+            通过线创建面
+            </summary>
+            <param name="pPolyline">线</param>
+            <returns>面</returns>
+        </member>
+        <member name="M:QArcGISLib.QPolygon.GetPolygonGeometry(ESRI.ArcGIS.Geometry.IPointCollection)">
+            <summary>
+            pointcollection 转 geometry
+            </summary>
+            <param name="Points"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolygon.GetPolygonGeometry(ESRI.ArcGIS.Geometry.IGeometry)">
+            <summary>
+            获取Geometry的内、外Ring
+            </summary>
+            <param name="pGeoPolygon"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolygon.GetInteriorRings(ESRI.ArcGIS.Geometry.IPolygon4@,ESRI.ArcGIS.Geometry.IRing@)">
+            <summary>
+            获取外部Ring内的内部Ring
+            </summary>
+            <param name="polygon"></param>
+            <param name="exteriorRing"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QPolyline">
+            <summary>
+            线
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.BreakPoint(ESRI.ArcGIS.Geometry.IPolyline,System.Double)">
+            <summary>
+            返回指定距离打断线之后的打断点
+            </summary>
+            <param name="iPolyline"></param>
+            <param name="intervDis">距离</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.DivideLine2NParts(ESRI.ArcGIS.Geometry.IPolyline,System.Double)">
+            <summary>
+            将一条线以间隔距离interv分割为N等分
+            </summary>
+            <param name="iPolyline"></param>
+            <param name="interv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.MinDistance(ESRI.ArcGIS.Geometry.IPolyline,ESRI.ArcGIS.Geometry.IPoint)">
+            <summary>
+            计算指定点到线之间的最小距离
+            </summary>
+            <param name="iPolyline"></param>
+            <param name="iPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.GetIntersectPoint(ESRI.ArcGIS.Geometry.IPolyline,ESRI.ArcGIS.Geometry.IPolyline)">
+            <summary>
+            获取两条线要素交点
+            </summary>
+            <param name="iPolyline1"></param>
+            <param name="iPolyline2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.QueryMiddlePoint(ESRI.ArcGIS.Geometry.IPolyline)">
+            <summary>
+            查询多段线的中间点
+            </summary>
+            <param name="pPolyline">传入的多段线</param>
+            <returns>中间点</returns>
+        </member>
+        <member name="M:QArcGISLib.QPolyline.GetPolylineGeometry(ESRI.ArcGIS.Geometry.IPointCollection)">
+            <summary>
+            由点集生成多段线的Geometry
+            </summary>
+            <param name="Points"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QRelease">
+            <summary>
+            释放对象类
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QRelease.ReleaseESRIObject(System.Object[])">
+            <summary>
+            释放ESRI对象
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="T:QArcGISLib.QSpatialReference">
+            <summary>
+            空间参考
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.CreateSpatialReference(System.String)">
+            <summary>  
+            根据prj文件创建空间参考  
+            </summary>  
+            <param name="strProFile">空间参照文件</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.CreateUnKnownSpatialReference(System.Double[])">
+            <summary>
+            创建空投影(Unknow)
+            </summary>
+            <param name="extent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.CreateGeographicCoordinate(ESRI.ArcGIS.Geometry.esriSRProjCS4Type)">
+            <summary>  
+            创建地理坐标系  
+            </summary>  
+            <param name="gcsType">esriSRProjCS4Type</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.CreateProjectedCoordinate(ESRI.ArcGIS.Geometry.esriSRProjCS4Type)">
+            <summary>  
+            创建投影坐标系  
+            </summary>  
+            <param name="pcsType">esriSRProjCS4Type</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.GetSpatialReference(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String@)">
+            <summary>
+            获取数据集空间参考
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="strDatasetName"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.GetSpatialReference(ESRI.ArcGIS.Geodatabase.IFeatureDataset)">
+            <summary>  
+            获取要素集空间参考  
+            </summary>  
+            <param name="pFeatureDataset">要素集</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.GetSpatialReference(ESRI.ArcGIS.Geodatabase.IFeatureClass)">
+            <summary>  
+            获取要素类空间参考  
+            </summary>  
+            <param name="pFeatureClass">要素类</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.GetSpatialReference(ESRI.ArcGIS.Carto.IFeatureLayer)">
+            <summary>  
+            获取要素层空间参考  
+            </summary>  
+            <param name="pFeatureLayer">要素层</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.GetSourceTargetSpatialRef(QArcGISLib.ETransType,System.Double,System.Double,System.Double,ESRI.ArcGIS.Geometry.ISpatialReference@,ESRI.ArcGIS.Geometry.ISpatialReference@)">
+            <summary>
+            获得源坐标系统和目标坐标系统，平面坐标系
+            </summary>
+            <param name="pEnumType">坐标转换类型</param>
+            <param name="fromLo"></param>
+            <param name="toLt"></param>
+            <param name="iMark">1：源坐标系统有带号，2：目标坐标系统需要添加带号，3：源坐标和目标坐标均没有带号 </param>
+            <param name="pSpaFrom"></param>
+            <param name="pSpaTo"></param>
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.AlterSpatialReference(ESRI.ArcGIS.Geodatabase.IFeatureDataset,ESRI.ArcGIS.Geometry.ISpatialReference)">
+            <summary>  
+            修改要素集空间参考  
+            </summary>  
+            <param name="pFeatureDataset">要素集</param>  
+            <param name="pSpatialReference">新空间参考</param>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.AlterSpatialReference(ESRI.ArcGIS.Geodatabase.IFeatureClass,ESRI.ArcGIS.Geometry.ISpatialReference)">
+            <summary>  
+            修改要素类空间参考  
+            </summary>  
+            <param name="pFeatureClass">要素类</param>  
+            <param name="pSpatialReference">新空间参考</param>  
+        </member>
+        <member name="M:QArcGISLib.QSpatialReference.AlterSpatial(ESRI.ArcGIS.Geodatabase.IGeoDataset@,QArcGISLib.ETransType,System.Double[])">
+            <summary>
+            修改数据集和要素类的投影设置
+            </summary>
+            <param name="pGeoDataset"></param>
+            <param name="pEnumType"></param>
+            <param name="ParaMeters"></param>
+        </member>
+        <member name="T:QArcGISLib.QTable">
+            <summary>
+            表格
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QTable.OpenTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String,System.String@)">
+            <summary>
+            打开表格
+            </summary>
+            <param name="pWorkSpace"></param>
+            <param name="tableName"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.ITable}@,System.String@)">
+            <summary>
+            获取工作空间下所有表格
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="listTable"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            根据表格名称获取表格
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="sTableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetTableNames(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@)">
+            <summary>
+            获取GDB里的所有纯表
+            </summary>
+            <param name="pWorkSpace"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetTableName(ESRI.ArcGIS.Geodatabase.ITable@)">
+            <summary>
+            获取表格名称
+            </summary>
+            <param name="pTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetNotNullTable(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.ITable}@)">
+            <summary>
+            获取非空表格列表
+            </summary>
+            <param name="listTable"></param>
+        </member>
+        <member name="M:QArcGISLib.QTable.IsNullTable(ESRI.ArcGIS.Geodatabase.ITable@)">
+            <summary>
+            是否是空表
+            </summary>
+            <param name="pTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.IsNullTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String)">
+            <summary>
+            判断表是否为空表
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.CreateTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@,System.String,System.String[])">
+            <summary>
+            根据源工作空间给目标工作空间创建相同字段的空表格
+            </summary>
+            <param name="pWsSrc">源工作空间</param>
+            <param name="pWsTar">目标工作空间</param>
+            <param name="error"></param>
+            <param name="suffix">表名添加后缀</param>
+            <param name="tableNames">指定创建的表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.CreateTable(ESRI.ArcGIS.Geodatabase.IWorkspace@,ESRI.ArcGIS.Geodatabase.ITable@,System.String)">
+            <summary>
+            创建新表
+            </summary>
+            <param name="pWorkspace"></param>
+            <param name="pTable"></param>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.CopyTable(ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@)">
+            <summary>
+            复制表格到目标工作空间
+            </summary>
+            <param name="pSrcTable"></param>
+            <param name="pTWorkspace"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.CopyTable(ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,System.String@,System.Boolean)">
+            <summary>
+            拷贝表格数据
+            </summary>
+            <param name="pSrcTable"></param>
+            <param name="pTarTable"></param>
+            <param name="error"></param>
+            <param name="bAppendFields">字段不一致时，是否追加字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.GetRowsInTable(ESRI.ArcGIS.Geodatabase.ITable@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow}@,System.String@)">
+            <summary>
+            获取表格所有行；
+            </summary>
+            <param name="pTable"></param>
+            <param name="listRows"></param>
+            <param name="error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.DeleteRow(ESRI.ArcGIS.Geodatabase.ITable,System.String)">
+            <summary>
+            删除表格行数据
+            </summary>
+            <param name="pTable"></param>
+            <param name="strWhereClause"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.FindSameRow(ESRI.ArcGIS.Geodatabase.ITable@,ESRI.ArcGIS.Geodatabase.ITable@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow}@,System.String@,System.String[])">
+            <summary>
+            查找两个表格之间相同的数据
+            </summary>
+            <param name="pTblSrc">源表格</param>
+            <param name="pTblTar">目标表格</param>
+            <param name="listFindRowTar">目标表格中已存在的相同的行数据</param>
+            <param name="error">错误信息</param>
+            <param name="fields">比较的字段，若为空则比较每一个字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.FindSameRow(System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow}@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow},System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow}@,System.String@,System.String[])">
+            <summary>
+            从两个行集合中找出相同的行数据
+            </summary>
+            <param name="listRowSrc">源行数据集合</param>
+            <param name="listRowTar">目标行数据集合</param>
+            <param name="listFindRowTar">目标行数据集合中，找到的相同的行数据集合</param>
+            <param name="error">错误信息</param>
+            <param name="fields">比较的字段，若为空则比较每一个字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.WriteRow2Table(ESRI.ArcGIS.Geodatabase.ITable@,System.Collections.Generic.List{ESRI.ArcGIS.Geodatabase.IRow}@,System.String@,System.Boolean)">
+            <summary>
+            表格写入数据
+            </summary>
+            <param name="pTarTable">目标表格</param>
+            <param name="listRow"></param>
+            <param name="error"></param>
+            <param name="bAppendFields">字段不一致时，是否追加字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.ToDataTable(ESRI.ArcGIS.Geodatabase.ITable)">
+            <summary>
+            将ITable转换为DataTable
+            </summary>
+            <param name="mTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QTable.ToITable(System.Data.DataTable,System.String,System.String,ESRI.ArcGIS.Geodatabase.ITable@,System.String@)">
+            <summary>
+            把DataTable转为ITable ,tempPath 不含的
+            </summary>
+            <param name="dataTable"></param>
+            <param name="foldPath">文件夹路径</param>
+            <param name="filename">文件名</param>
+            <param name="pNewTable">返回的表</param>
+            <param name="error">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.QWorkspace">
+            <summary>
+            工作空间
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.QWorkspace.OpenWorkSpace(System.String,QArcGISLib.EGdbType,System.String@)">
+            <summary>
+            打开gdb mdb工作空间
+            </summary>
+            <param name="arg_DbPath">文件路径</param>
+            <param name="arg_DbType">PersonGeodatabase:gdb,FileGeodatabase:mdb,Shapefile:shapefile</param>
+            <param name="strErrInfo">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QWorkspace.OpenWorkSpace(System.String,System.String@)">
+            <summary>
+            打开工作空间
+            </summary>
+            <param name="arg_DbPath">数据库完整路径</param>
+            <param name="strErrInfo">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QWorkspace.CreateWorkSpace(System.String,System.String@)">
+            <summary>
+            创建工作空间,支持FileGeoDatabase,PersonalGeoDatabase,Shapefile
+            </summary>
+            <param name="strGdbPath"></param>
+            <param name="strErrInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QWorkspace.GetDatabaseType(System.String,System.Int32@)">
+            <summary>
+            获取文件类型
+            </summary>
+            <param name="filepath"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.QWorkspace.GetDatabaseType(System.String,QArcGISLib.EGdbType@)">
+            <summary>
+            获取数据库类型
+            </summary>
+            <param name="filepath"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.SDE.QSDEWorkspace">
+            <summary>
+            SDE工作空间
+            </summary>
+        </member>
+        <member name="P:QArcGISLib.SDE.QSDEWorkspace.SdeWorkspace">
+            <summary>
+            获取SDE工作空间
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.SDE.QSDEWorkspace.OpenOracleSdeWorkspace(System.String,System.String,System.String,System.String@,QArcGISLib.EDatabaseType,System.String)">
+            <summary>
+            打开oracle工作空间
+            </summary>
+            <param name="arg_server">服务器地址，如：192.168.34.152</param>
+            <param name="arg_userName"></param>
+            <param name="arg_passWord"></param>
+            <param name="arg_error"></param>
+            <param name="dbType">数据库类型</param>
+            <param name="arg_dbName">数据库名称，为空时arg_server要加上数据库名称 /database </param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.SDE.QSDEWorkspace.OpenSdeWorkspace(System.String,System.String,System.String,System.String,System.String,System.String@,System.String)">
+            <summary>
+            打开sde工作空间
+            </summary>
+            <param name="arg_Server">服务器地址，如：192.168.34.152</param>
+            <param name="arg_Instance">连接实例，如sde:sqlserver:192.168.34.152</param>
+            <param name="arg_userName">用户名</param>
+            <param name="arg_passWord">密码</param>
+            <param name="arg_database">要连接的数据库名称</param>
+            <param name="arg_error"></param>
+            <param name="arg_version">//数据库的拥有者也就是数据库的架构，一般是DBO或SDE</param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.SDE.QSDEWorkspace.OpenSdeWorkspace(ESRI.ArcGIS.esriSystem.IPropertySet,System.String@)">
+            <summary>
+            打开SDE工作空间
+            </summary>
+            <param name="pPropSet">属性设置</param>
+            <param name="arg_error"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.SDE.QSDEWorkspace.OpenSdeWorkspace(System.String,ESRI.ArcGIS.Geodatabase.IWorkspace@,System.String@)">
+            <summary>
+            从sde文件打开工作空间
+            </summary>
+            <param name="connectionFile"></param>
+            <param name="pWorkspace"></param>
+            <param name="sError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QArcGISLib.SDE.QSDEWorkspace.CloseSDEWorkspace">
+            <summary>
+            关闭SDE工作空间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:QArcGISLib.SHP.QSHP_FeatureClass">
+            <summary>
+            shp FeatureClass
+            </summary>
+        </member>
+        <member name="M:QArcGISLib.SHP.QSHP_FeatureClass.OpenShpFeatureClass(System.String,System.String@)">
+            <summary>
+            读取 shapefile 要素类
+            </summary>
+            <param name="arg_SHPPath">shapefile文件路径</param>
+            <param name="strErrInfo">错误信息</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
